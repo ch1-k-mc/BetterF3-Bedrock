@@ -20,8 +20,10 @@ Minecraft 統合版に、自由に組み替えられる F3 デバッグ画面を
 **lip**
 
 ```
-lip install github.com/ch1-k-mc/BetterF3-Bedrock
+lip install github.com/ch1-k-mc/BetterF3-Bedrock#client
 ```
+
+LeviLamina（client）のゲームフォルダで実行します。
 
 **手動**: [Releases](../../releases) から `BetterF3-client-windows-x64.zip` をダウンロードし、`BetterF3` フォルダを `mods/` に置きます。
 

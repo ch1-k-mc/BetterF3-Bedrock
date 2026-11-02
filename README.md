@@ -20,8 +20,10 @@ A customizable F3 debug screen for Minecraft: Bedrock Edition. A [LeviLamina](ht
 **lip**
 
 ```
-lip install github.com/ch1-k-mc/BetterF3-Bedrock
+lip install github.com/ch1-k-mc/BetterF3-Bedrock#client
 ```
+
+Run it in the game directory of your LeviLamina client.
 
 **Manual**: download `BetterF3-client-windows-x64.zip` from [Releases](../../releases) and extract the `BetterF3` folder into `mods/`.
 
