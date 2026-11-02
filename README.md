@@ -2,6 +2,8 @@
 
 [日本語](README.ja.md)
 
+![BetterF3 for Bedrock](docs/images/screenshot.png)
+
 A customizable F3 debug screen for Minecraft: Bedrock Edition. A [LeviLamina](https://github.com/LiteLDev/LeviLamina) port of the Java Edition mod [BetterF3](https://github.com/TreyRuffy/BetterF3) by cominixo / TreyRuffy.
 
 > This is an unofficial port, not affiliated with the authors of the original BetterF3.
@@ -18,7 +20,7 @@ A customizable F3 debug screen for Minecraft: Bedrock Edition. A [LeviLamina](ht
 **lip**
 
 ```
-lip install github.com/<YOUR_NAME>/BetterF3-Bedrock
+lip install github.com/ch1-k-mc/BetterF3-Bedrock
 ```
 
 **Manual**: download `BetterF3-client-windows-x64.zip` from [Releases](../../releases) and extract the `BetterF3` folder into `mods/`.

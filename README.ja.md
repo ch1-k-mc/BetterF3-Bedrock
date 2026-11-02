@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+![BetterF3 for Bedrock](docs/images/screenshot.png)
+
 Minecraft 統合版に、自由に組み替えられる F3 デバッグ画面を足す Mod です。Java 版の Mod [BetterF3](https://github.com/TreyRuffy/BetterF3)（作者 cominixo / TreyRuffy）を [LeviLamina](https://github.com/LiteLDev/LeviLamina) 向けに移植したものです。
 
 > 本家 BetterF3 の作者とは関係のない、非公式の移植です。
@@ -18,7 +20,7 @@ Minecraft 統合版に、自由に組み替えられる F3 デバッグ画面を
 **lip**
 
 ```
-lip install github.com/<YOUR_NAME>/BetterF3-Bedrock
+lip install github.com/ch1-k-mc/BetterF3-Bedrock
 ```
 
 **手動**: [Releases](../../releases) から `BetterF3-client-windows-x64.zip` をダウンロードし、`BetterF3` フォルダを `mods/` に置きます。
