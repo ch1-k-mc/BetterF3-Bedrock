@@ -1,0 +1,52 @@
+{
+  "format_version": 3,
+  "format_uuid": "289f771f-2c9a-4d73-9f3f-8492495a924d",
+  "tooth": "github.com/<YOUR_NAME>/BetterF3-Bedrock",
+  "version": "0.1.0",
+  "info": {
+    "name": "BetterF3",
+    "description": "An unofficial Bedrock Edition (LeviLamina) port of the Java Edition mod BetterF3: a customizable, modular F3 debug screen.",
+    "tags": [
+      "platform:levilamina",
+      "type:mod"
+    ]
+  },
+  "variants": [
+    {
+      "label": "client",
+      "platform": "win-x64",
+      "dependencies": {
+        "github.com/LiteLDev/LeviLamina#client": "26.51.*"
+      },
+      "assets": [
+        {
+          "type": "zip",
+          "urls": [
+            "https://{{tooth}}/releases/download/v{{version}}/BetterF3-client-windows-x64.zip"
+          ],
+          "placements": [
+            {
+              "type": "dir",
+              "src": "BetterF3/",
+              "dest": "mods/BetterF3/"
+            }
+          ]
+        }
+      ],
+      "preserve_files": [
+        "mods/BetterF3/config/betterf3.json"
+      ],
+      "remove_files": [],
+      "scripts": {
+        "pre_install": [],
+        "install": [],
+        "post_install": [],
+        "pre_pack": [],
+        "post_pack": [],
+        "pre_uninstall": [],
+        "uninstall": [],
+        "post_uninstall": []
+      }
+    }
+  ]
+}
