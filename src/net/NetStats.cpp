@@ -47,21 +47,6 @@ float lerp(float t, float a, float b) { return a + t * (b - a); }
 }
 
 LL_TYPE_INSTANCE_HOOK(
-    BetterF3IncomingPacketHook,
-    ll::memory::HookPriority::Normal,
-    ClientNetworkHandler,
-    &ClientNetworkHandler::$allowIncomingPacketId,
-    ::IncomingPacketFilterResult,
-    ::NetworkIdentifierWithSubId const& id,
-    ::MinecraftPacketIds                packetId,
-    uint64                              packetSize
-) {
-    ++gReceived;
-    gReceivedBytes += packetSize;
-    return origin(id, packetId, packetSize);
-}
-
-LL_TYPE_INSTANCE_HOOK(
     BetterF3StartGameHook,
     ll::memory::HookPriority::Normal,
     LegacyClientNetworkHandler,
@@ -80,15 +65,13 @@ LL_TYPE_INSTANCE_HOOK(
 
 bool install() {
     if (gHooked) return true;
-    bool ok = BetterF3IncomingPacketHook::hook() == 0;
-    ok      = (BetterF3StartGameHook::hook() == 0) && ok;
+    bool ok = BetterF3StartGameHook::hook() == 0;
     gHooked = true;
     return ok;
 }
 
 void uninstall() {
     if (!gHooked) return;
-    BetterF3IncomingPacketHook::unhook();
     BetterF3StartGameHook::unhook();
     gHooked = false;
 }

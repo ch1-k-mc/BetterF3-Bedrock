@@ -1,6 +1,6 @@
 # BetterF3 for Bedrock
 
-[English](README.md)
+[English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md)
 
 ![BetterF3 for Bedrock](docs/images/screenshot.png)
 
@@ -12,8 +12,10 @@ Minecraft 統合版に、自由に組み替えられる F3 デバッグ画面を
 
 | | 版 |
 |---|---|
-| Minecraft 統合版 | 1.26.51（Windows） |
-| LeviLamina | 26.51.x（client） |
+| Minecraft 統合版 | 1.26.60（Windows） |
+| LeviLamina | 26.60.x |
+
+Minecraft 1.26.51 用は [古い版](#古い版) を見てください。
 
 ## 導入
 
@@ -26,6 +28,15 @@ lip install github.com/ch1-k-mc/BetterF3-Bedrock#client
 LeviLamina（client）のゲームフォルダで実行します。
 
 **手動**: [Releases](../../releases) から `BetterF3-client-windows-x64.zip` をダウンロードし、`BetterF3` フォルダを `mods/` に置きます。
+
+## 古い版
+
+| Minecraft | LeviLamina | BetterF3 |
+|---|---|---|
+| 1.26.60 | 26.60.x | 0.2.0 以降（このブランチ） |
+| 1.26.51 | 26.51.x | [0.1.0](../../releases/tag/v0.1.0)（ソース: [`mc-1.26.51` ブランチ](../../tree/mc-1.26.51)） |
+
+lip の場合: `lip install github.com/ch1-k-mc/BetterF3-Bedrock#client@0.1.0`
 
 ## 使い方
 
@@ -44,7 +55,7 @@ LeviLamina（client）のゲームフォルダで実行します。
 - F3 + キーの操作: 当たり判定・チャンクの境界・位置のコピー・詳細なツールチップ・ゲームモードの切り替えなど
 - 処理時間・FPS / TPS・遅延 / 通信量のグラフ
 - マルチプレイのサーバーの情報
-- 英語・日本語
+- 英語・日本語・中国語（簡体字・繁体字）
 
 一覧は [機能](docs/FEATURES.ja.md) を見てください。
 

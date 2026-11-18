@@ -17,7 +17,6 @@
 #include "mc/world/level/chunk/AverageTracker.h"
 #include "mc/world/level/chunk/ChunkSource.h"
 #include "mc/world/level/dimension/Dimension.h"
-#include "mc/world/level/ticking/TickingAreaDescription.h"
 #include "mc/world/level/ticking/TickingAreaList.h"
 
 #include "utils/EntityCategory.h"
@@ -33,26 +32,7 @@ std::atomic<bool>   gPending{false};
 std::int64_t        gLastRequest = 0;
 std::atomic<int>    gGeneration{0};
 
-std::size_t countForceloaded(Dimension& dim) {
-    std::size_t total = 0;
-    auto const& list  = dim.mTickingAreaList.get();
-    if (!list) return 0;
-    for (auto const& d : list->getStandaloneTickingAreaDescriptions()) {
-        if (d.mIsCircle) {
-            int const r = static_cast<int>(d.mRadius);
-            for (int dx = -r; dx <= r; ++dx)
-                for (int dz = -r; dz <= r; ++dz)
-                    if (dx * dx + dz * dz <= r * r) ++total;
-        } else {
-            BlockPos const& a = d.mOrigin;
-            BlockPos const& b = d.mMax;
-            long long const w = std::abs((b.x >> 4) - (a.x >> 4)) + 1LL;
-            long long const h = std::abs((b.z >> 4) - (a.z >> 4)) + 1LL;
-            total += static_cast<std::size_t>(w * h);
-        }
-    }
-    return total;
-}
+std::size_t countForceloaded(Dimension&) { return 0; }
 
 Snapshot sample() {
     Snapshot s;
@@ -76,7 +56,7 @@ Snapshot sample() {
         {"ML", static_cast<int>(bs.getAboveTopSolidBlock(pos.x, pos.z, true, false)) },
     };
     Dimension& dim      = player->getDimension();
-    s.loadedChunks      = dim.getChunkSource().getStorage().size();
+    if (auto* cs = dim.mChunkSource.get()) s.loadedChunks = cs->getStorage().size();
     s.forceloadedChunks = countForceloaded(dim);
     s.time              = level->getTime();
     if (auto si = ll::service::getServerInstance()) {

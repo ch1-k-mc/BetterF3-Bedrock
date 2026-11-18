@@ -142,8 +142,8 @@ LL_TYPE_INSTANCE_HOOK(
     if (hb) hitboxes(l, *player);
     if (cb) chunkBorders(l, *player);
     gLines = l.count;
-    if (l.count > 0) ::MeshHelpers::renderMeshImmediately(sc, t, wireframeMaterial, ::OffscreenCaptureDescription{});
-    else t.clear();
+    if (l.count == 0) l.line(l.cam.x, l.cam.y, l.cam.z, l.cam.x, l.cam.y, l.cam.z);
+    ::MeshHelpers::renderMeshImmediately(sc, t, wireframeMaterial, ::OffscreenCaptureDescription{});
     t.mPostTransformOffset = saved;
 }
 

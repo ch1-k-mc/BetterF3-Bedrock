@@ -248,7 +248,7 @@ void showHelp() {
 void showVersion() {
     feedback(tr("betterf3.debug.version.header"));
     auto const g = ll::getGameVersion();
-    chat("Minecraft: " + std::to_string(g.major) + "." + std::to_string(g.minor) + "." + std::to_string(g.patch) + " (protocol " + std::to_string(SharedConstants::NetworkProtocolVersion()) + ")");
+    chat("Minecraft: " + std::to_string(g.major) + "." + std::to_string(g.minor) + "." + std::to_string(g.patch));
     chat("LeviLamina: " + ll::getLoaderVersion().to_string());
     chat("BetterF3: " + utils::modVersion());
     chat("OS: " + SystemInfo::osName());
@@ -325,7 +325,9 @@ void pauseWithoutMenu() {
     auto* ci = client();
     if (!ci) return;
     auto& mg = static_cast<MinecraftGame&>(ci->getMinecraftGame());
-    mg.requestInGamePause(SubClientId::PrimaryClient, !mg._isGameplayPaused());
+    static bool paused = false;
+    paused             = !paused;
+    mg.requestInGamePause(SubClientId::PrimaryClient, paused);
 }
 
 }
@@ -348,6 +350,7 @@ bool shouldSuppress(bool status) {
 
 LL_TYPE_INSTANCE_HOOK(BetterF3FocusLostHook, ll::memory::HookPriority::Normal, MinecraftGame, &MinecraftGame::$onAppFocusLost, void) {
     gFocused = false;
+    shouldSuppress(true);
     origin();
 }
 
@@ -355,31 +358,6 @@ LL_TYPE_INSTANCE_HOOK(BetterF3FocusGainedHook, ll::memory::HookPriority::Normal,
     gFocused  = true;
     gGainedAt = utils::millis();
     origin();
-}
-
-LL_TYPE_INSTANCE_HOOK(
-    BetterF3RequestPauseHook,
-    ll::memory::HookPriority::Normal,
-    MinecraftGame,
-    &MinecraftGame::$requestInGamePause,
-    bool,
-    ::SubClientId const& subClient,
-    bool                 status
-) {
-    if (shouldSuppress(status)) return false;
-    return origin(subClient, status);
-}
-
-LL_TYPE_INSTANCE_HOOK(
-    BetterF3ClientRequestPauseHook,
-    ll::memory::HookPriority::Normal,
-    ClientInstance,
-    &ClientInstance::$requestInGamePause,
-    bool,
-    bool status
-) {
-    if (shouldSuppress(status)) return false;
-    return origin(status);
 }
 
 namespace {
@@ -441,11 +419,7 @@ bool press(int key, bool shift, bool ctrl) {
         return true;
     case 'C': copyLocation(); return true;
     case 'D':
-        if (auto* ci = client()) {
-            auto gd = ci->getGuiData();
-            gd->clearPlayerMessages();
-            gd->mGuiMessages->clear();
-        }
+        feedback(tr("betterf3.debug.not_supported"));
         return true;
     case 'F':
         if (ctrl) feedback(tr("betterf3.debug.not_supported"));
@@ -517,8 +491,6 @@ bool install() {
     hooks::setReleaseHandler([](bool) { releaseF3(); });
     bool ok = BetterF3FocusLostHook::hook() == 0;
     ok      = (BetterF3FocusGainedHook::hook() == 0) && ok;
-    ok      = (BetterF3RequestPauseHook::hook() == 0) && ok;
-    ok      = (BetterF3ClientRequestPauseHook::hook() == 0) && ok;
     gPauseListener = ll::event::EventBus::getInstance().emplaceListener<ll::event::AfterUIRenderEvent>([](ll::event::AfterUIRenderEvent&) { dismissFocusPauseScreen(); });
     gEscListener   = ll::event::EventBus::getInstance().emplaceListener<ll::event::KeyInputEvent>([](ll::event::KeyInputEvent& e) {
         if (e.keyCode() == VK_ESC && e.isDown()) gEscAt = utils::millis();
@@ -536,8 +508,6 @@ void uninstall() {
     gEscListener = nullptr;
     BetterF3FocusLostHook::unhook();
     BetterF3FocusGainedHook::unhook();
-    BetterF3RequestPauseHook::unhook();
-    BetterF3ClientRequestPauseHook::unhook();
     BetterF3HovertextHook::unhook();
 }
 

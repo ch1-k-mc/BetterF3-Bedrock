@@ -7,6 +7,7 @@
 
 #include "mc/client/game/ClientInstance.h"
 #include "mc/client/gui/CaretMeasureData.h"
+#include "mc/client/gui/Font.h"
 #include "mc/client/gui/FontHandle.h"
 #include "mc/client/gui/GuiData.h"
 #include "mc/client/gui/ScreenSizeData.h"
@@ -56,7 +57,7 @@ Gui2d::~Gui2d() { flush(); }
 Font& Gui2d::font() {
     if (!mFont) {
         ::FontHandle handle = mClient.getFontHandle();
-        mFont               = &handle.getFont();
+        mFont = handle.mDefaultFont.get();
     }
     return *mFont;
 }

@@ -1,6 +1,6 @@
 # Features
 
-[日本語](FEATURES.ja.md)
+[日本語](FEATURES.ja.md) | [简体中文](FEATURES.zh-CN.md) | [繁體中文](FEATURES.zh-TW.md)
 
 ## Modules
 
@@ -55,4 +55,5 @@ Hitboxes, chunk borders, copy location / block / entity, advanced tooltips, rend
 ## Known issues
 
 - Client only.
+- On Minecraft 1.26.60, LeviLamina does not yet provide some game functions, so these do not work: Chunk Sections total and Forceloaded Chunks (shown as 0), Packets Received and incoming bandwidth, `F3` + `D`, the protocol number in `F3` + `V`. Text fields in the settings screen accept only letters, digits, `.`, `-` and `#`. They work on 1.26.51 ([Older versions](../README.md#older-versions)).
 - Bedrock's coordinate display and chat overlap the left side of the debug screen.

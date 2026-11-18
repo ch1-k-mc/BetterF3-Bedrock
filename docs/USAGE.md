@@ -1,6 +1,6 @@
 # Usage
 
-[日本語](USAGE.ja.md)
+[日本語](USAGE.ja.md) | [简体中文](USAGE.zh-CN.md) | [繁體中文](USAGE.zh-TW.md)
 
 ## Keys
 
@@ -48,7 +48,7 @@ Open it with `F3` + `M`.
 | `/betterf3 module <side> <n> line <line> on\|off` | Show / hide a line |
 | `/betterf3 module <side> <n> set <key> <value>` | Change a module setting |
 | `/betterf3 module <side> add <id> [n]` / `remove <n>` / `move <from> <to>` | Add / remove / move modules |
-| `/betterf3 lang [en_us\|ja_jp]` | Force the language (no argument: follow the game) |
+| `/betterf3 lang [en_us\|ja_jp\|zh_cn\|zh_tw]` | Force the language (no argument: follow the game) |
 
 Module ids: `minecraft` `fps` `graphics` `server` `coords` `chunks` `location` `entity` `sound` `help` `empty` `miscleft` `system` `miscright` `target`
 

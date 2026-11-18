@@ -1,6 +1,6 @@
 # 機能
 
-[English](FEATURES.md)
+[English](FEATURES.md) | [简体中文](FEATURES.zh-CN.md) | [繁體中文](FEATURES.zh-TW.md)
 
 ## モジュール
 
@@ -55,5 +55,6 @@
 ## 既知の問題
 
 - クライアント専用です。
+- Minecraft 1.26.60 では、LeviLamina がまだ一部のゲームの関数を提供していないため、次のものが動きません: Chunk Sections の total と Forceloaded Chunks（0 と表示）、Packets Received と受信量、`F3` + `D`、`F3` + `V` のプロトコル番号。設定画面の入力欄は英数字と `.` `-` `#` だけ入力できます。1.26.51 では動きます（[古い版](../README.ja.md#古い版)）。
 - 統合版の座標表示とチャットが、デバッグ画面の左側と重なります。
 

@@ -229,6 +229,18 @@ bool GuiManager::onScroll(float delta) {
     return isOpen();
 }
 
+std::string keyToText(int code, bool shift) {
+    if (code >= '0' && code <= '9') return shift && code == '3' ? "#" : std::string(1, static_cast<char>(code));
+    if (code >= 'A' && code <= 'Z') return std::string(1, static_cast<char>(shift ? code : code - 'A' + 'a'));
+    if (code >= 0x60 && code <= 0x69) return std::string(1, static_cast<char>('0' + code - 0x60));
+    switch (code) {
+    case 0xBE: case 0x6E: return ".";
+    case 0xBD: case 0x6D: return "-";
+    case 0x20: return " ";
+    default: return "";
+    }
+}
+
 bool GuiManager::onKey(int code) {
     if (Screen* s = top()) s->keyPressed(code);
     return isOpen();
@@ -244,29 +256,15 @@ LL_TYPE_INSTANCE_HOOK(BetterF3ClientGrabMouseHook, ll::memory::HookPriority::Nor
     origin();
 }
 
-LL_TYPE_INSTANCE_HOOK(BetterF3GameGrabMouseHook, ll::memory::HookPriority::Normal, MinecraftGame, &MinecraftGame::$grabMouse, void) {
-    if (!gAllowGrab) return;
-    origin();
-}
-
-LL_TYPE_INSTANCE_HOOK(
-    BetterF3TextInputHook,
-    ll::memory::HookPriority::Normal,
-    HIDControllerGameCoreDesktop,
-    &HIDControllerGameCoreDesktop::$onTextInput,
-    void,
-    ::std::string const& utf8Text
-) {
-    if (GuiManager::get().isOpen() && GuiManager::get().onText(utf8Text)) return;
-    origin(utf8Text);
-}
-
 bool GuiManager::install() {
     auto& bus = ll::event::EventBus::getInstance();
     gListeners.push_back(bus.emplaceListener<ll::event::KeyInputEvent>(
         [this](ll::event::KeyInputEvent& e) {
             if (!isOpen() || !hudOnTop()) return;
-            if (e.isDown()) onKey(e.keyCode());
+            if (e.isDown()) {
+                onKey(e.keyCode());
+                if (auto t = keyToText(e.keyCode(), hooks::isShiftDown()); !t.empty()) onText(t);
+            }
             else hooks::noteSwallowedKeyUp(e.keyCode());
             e.cancel();
         },
@@ -297,8 +295,6 @@ bool GuiManager::install() {
     ));
     if (!gHooked) {
         bool ok = BetterF3ClientGrabMouseHook::hook() == 0;
-        ok      = (BetterF3GameGrabMouseHook::hook() == 0) && ok;
-        ok      = (BetterF3TextInputHook::hook() == 0) && ok;
         gHooked = true;
         return ok;
     }
@@ -312,8 +308,6 @@ void GuiManager::uninstall() {
     closeAll();
     if (gHooked) {
         BetterF3ClientGrabMouseHook::unhook();
-        BetterF3GameGrabMouseHook::unhook();
-        BetterF3TextInputHook::unhook();
         gHooked = false;
     }
 }

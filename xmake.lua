@@ -9,7 +9,7 @@ option("target_type")
     set_values("client")
 option_end()
 
-add_requires("levilamina 26.51.*", {configs = {target_type = get_config("target_type")}})
+add_requires("levilamina 26.60.*", {configs = {target_type = get_config("target_type")}})
 add_requires("levibuildscript")
 
 if not has_config("vs_runtime") then
@@ -18,7 +18,7 @@ end
 
 target("BetterF3")
     add_rules("@levibuildscript/linkrule")
-    add_rules("@levibuildscript/modpacker", {modVersion = "0.1.0"})
+    add_rules("@levibuildscript/modpacker", {modVersion = "0.2.0"})
     if is_plat("windows") then
         add_defines("NOMINMAX", "UNICODE", "_HAS_CXX23=1")
         set_exceptions("none") -- To avoid conflicts with /EHa.

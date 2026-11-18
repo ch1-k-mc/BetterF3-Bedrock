@@ -1,6 +1,6 @@
 # 使い方
 
-[English](USAGE.md)
+[English](USAGE.md) | [简体中文](USAGE.zh-CN.md) | [繁體中文](USAGE.zh-TW.md)
 
 ## キー
 
@@ -48,7 +48,7 @@
 | `/betterf3 module <側> <番号> line <行> on\|off` | 行を表示 / 非表示に |
 | `/betterf3 module <側> <番号> set <キー> <値>` | モジュールの設定を変更 |
 | `/betterf3 module <側> add <id> [番号]` / `remove <番号>` / `move <元> <先>` | モジュールを追加 / 削除 / 移動 |
-| `/betterf3 lang [en_us\|ja_jp]` | 言語を固定（引数なしでゲームの言語に戻す） |
+| `/betterf3 lang [en_us\|ja_jp\|zh_cn\|zh_tw]` | 言語を固定（引数なしでゲームの言語に戻す） |
 
 モジュールの id: `minecraft` `fps` `graphics` `server` `coords` `chunks` `location` `entity` `sound` `help` `empty` `miscleft` `system` `miscright` `target`
 

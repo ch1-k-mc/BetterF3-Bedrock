@@ -286,7 +286,9 @@ void ChunksModule::update(ClientInstance& client) {
         utils::styledText(std::to_string(rs.queuedChunks), valueColor),
         utils::styledText(std::to_string(rs.viewAreaChunks), totalColor)});
 
-    auto const& storage = player->getDimension().getChunkSource().getStorage();
+    auto* chunkSource = player->getDimension().mChunkSource.get();
+    if (!chunkSource) return;
+    auto const& storage = chunkSource->getStorage();
     std::size_t alive   = 0;
     for (auto const& [pos, weak] : storage) {
         if (!weak.expired()) ++alive;

@@ -1,6 +1,6 @@
 # BetterF3 for Bedrock
 
-[日本語](README.ja.md)
+[日本語](README.ja.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md)
 
 ![BetterF3 for Bedrock](docs/images/screenshot.png)
 
@@ -12,8 +12,10 @@ A customizable F3 debug screen for Minecraft: Bedrock Edition. A [LeviLamina](ht
 
 | | Version |
 |---|---|
-| Minecraft: Bedrock Edition | 1.26.51 (Windows) |
-| LeviLamina | 26.51.x client |
+| Minecraft: Bedrock Edition | 1.26.60 (Windows) |
+| LeviLamina | 26.60.x |
+
+For Minecraft 1.26.51, see [Older versions](#older-versions).
 
 ## Installation
 
@@ -26,6 +28,15 @@ lip install github.com/ch1-k-mc/BetterF3-Bedrock#client
 Run it in the game directory of your LeviLamina client.
 
 **Manual**: download `BetterF3-client-windows-x64.zip` from [Releases](../../releases) and extract the `BetterF3` folder into `mods/`.
+
+## Older versions
+
+| Minecraft | LeviLamina | BetterF3 |
+|---|---|---|
+| 1.26.60 | 26.60.x | 0.2.0 or later (this branch) |
+| 1.26.51 | 26.51.x | [0.1.0](../../releases/tag/v0.1.0) (source: [`mc-1.26.51` branch](../../tree/mc-1.26.51)) |
+
+With lip: `lip install github.com/ch1-k-mc/BetterF3-Bedrock#client@0.1.0`
 
 ## Usage
 
@@ -44,7 +55,7 @@ See [Usage](docs/USAGE.md) for all keys, the settings screen, commands and the c
 - F3 key combinations: hitboxes, chunk borders, copy location, advanced tooltips, game mode switcher and more
 - Profiler, FPS / TPS and ping / bandwidth charts
 - Server information on multiplayer servers
-- English and Japanese
+- English, Japanese and Chinese (Simplified / Traditional)
 
 See [Features](docs/FEATURES.md) for the full list.
 

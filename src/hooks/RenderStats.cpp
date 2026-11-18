@@ -5,7 +5,6 @@
 
 #include "mc/client/renderer/game/LevelRendererCamera.h"
 #include "mc/client/renderer/chunks/RenderChunkInstanced.h"
-#include "mc/util/GridArea.h"
 
 namespace better_f3::RenderStats {
 
@@ -26,11 +25,6 @@ LL_TYPE_INSTANCE_HOOK(
 ) {
     origin(baseEntityRenderContext, renderObj, ci);
     Snapshot s;
-    if (auto const& area = mViewArea.get(); area) {
-        for (auto const& c : area->mChunkDataBox.mContent.mChunks) {
-            if (c) ++s.viewAreaChunks;
-        }
-    }
     s.queuedChunks = static_cast<std::size_t>(mChunkQueueSize);
     s.actorQueue   = mActorRenderQueue->keys().size();
     s.valid        = true;
