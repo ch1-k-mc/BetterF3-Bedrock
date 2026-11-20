@@ -2,14 +2,21 @@
   "format_version": 3,
   "format_uuid": "289f771f-2c9a-4d73-9f3f-8492495a924d",
   "tooth": "github.com/ch1-k-mc/BetterF3-Bedrock",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "info": {
     "name": "BetterF3",
     "description": "An unofficial Bedrock Edition (LeviLamina) port of the Java Edition mod BetterF3: a customizable, modular F3 debug screen.",
     "tags": [
       "platform:levilamina",
-      "type:mod"
-    ]
+      "type:mod",
+      "client",
+      "hud",
+      "visual",
+      "utility",
+      "info-display",
+      "debug"
+    ],
+    "avatar_url": "https://raw.githubusercontent.com/ch1-k-mc/BetterF3-Bedrock/main/docs/images/icon.png"
   },
   "variants": [
     {

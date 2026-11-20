@@ -22,7 +22,7 @@ For Minecraft 1.26.51, see [Older versions](#older-versions).
 **lip**
 
 ```
-lip install github.com/ch1-k-mc/BetterF3-Bedrock#client
+lip install github.com/ch1-k-mc/BetterF3-Bedrock
 ```
 
 Run it in the game directory of your LeviLamina client.

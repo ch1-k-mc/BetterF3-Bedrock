@@ -22,7 +22,7 @@ Minecraft 1.26.51 用は [古い版](#古い版) を見てください。
 **lip**
 
 ```
-lip install github.com/ch1-k-mc/BetterF3-Bedrock#client
+lip install github.com/ch1-k-mc/BetterF3-Bedrock
 ```
 
 LeviLamina（client）のゲームフォルダで実行します。

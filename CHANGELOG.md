@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1
+
+No changes to the mod itself.
+
+- Added `lip.toml` (the package format of lip 0.40 and later) so the mod can be listed on LeviMC Mods. Install with `lip install github.com/ch1-k-mc/BetterF3-Bedrock` (no `#client`).
+- Added an icon and tags for LeviMC Mods.
+
 ## 0.2.0
 
 Support Minecraft: Bedrock Edition 1.26.60 / LeviLamina 26.60 ([#1](../../issues/1)).

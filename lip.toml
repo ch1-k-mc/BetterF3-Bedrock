@@ -1,0 +1,23 @@
+format = 4
+id = "github.com/ch1-k-mc/BetterF3-Bedrock"
+version = "0.2.1"
+
+[info]
+name = "BetterF3"
+description = "An unofficial Bedrock Edition (LeviLamina) port of the Java Edition mod BetterF3: a customizable, modular F3 debug screen."
+tags = ["platform:levilamina", "type:mod", "client", "hud", "visual", "utility", "info-display", "debug"]
+logo = "https://raw.githubusercontent.com/ch1-k-mc/BetterF3-Bedrock/main/docs/images/icon.png"
+
+# Client only. LeviLamina 26.60 has no "client" variant: the entry is picked by side.
+[[variants.""]]
+side = "client"
+platform = "win-x64"
+preserve = ["mods/BetterF3/config/betterf3.json"]
+
+[variants."".deps]
+"github.com/LiteLDev/LeviLamina" = "26.60.*"
+
+[[variants."".assets]]
+type = "zip"
+urls = ["https://{{id}}/releases/download/v{{version}}/BetterF3-client-windows-x64.zip"]
+place = [{ src = "BetterF3/", dest = "mods/BetterF3/" }]
